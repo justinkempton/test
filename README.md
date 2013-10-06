@@ -1,17 +1,16 @@
-Simple, integrated, console based testing for the PAGE framework
-=====
+###### Simple, integrated, console based testing for the PAGE framework ######
 
-This is yet another testing framework written from scratch that works great in conjunction with the PAGE framework
+Allows easy initiation of testing over all testable code written within the PAGE(dog) framework.
 
-Open up your console (preferably in chrome). In your console type PAGE.runAllTests() to see results
+Open up your console (preferably in chrome). In your console type ```PAGE.runAllTests()``` to see results
 
-Features
-==
-Asynchronous and synchronous testing
-Dynamically load tests as seperate files. it loads test files through test.config.js
-Tests are not loaded until you call PAGE.runAllTests(), saving bandwidth.
-Tests are easily married to the PAGE framework constructors, modules, or Properties.
-Tests can be broken out into individual test files for more portability.
+> Features
+> + Asynchronous and synchronous testing
+> + Dynamically load tests as seperate files.
+> + Config based list of test files.
+> + Tests are not loaded until you call PAGE.runAllTests(), saving bandwidth. 
+> + Tests are easily married to the PAGE framework constructors, modules, or Properties.
+> + Tests can be broken out into individual test files for more portability.
 
 Future enhancements
 ==
