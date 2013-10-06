@@ -1,8 +1,8 @@
-###### Simple, integrated, console based testing for the PAGE framework ######
+### Simple, integrated, console based testing for the PAGE framework ######
 
 Allows easy initiation of testing over all testable code written within the PAGE(dog) framework.
-
-Open up your console (preferably in chrome). In your console type ```PAGE.runAllTests()``` to see results
+Download demo code, and run in a localHost. In a browser, open up your console (preferably in chrome) 
+then type ```PAGE.runAllTests()``` to see results of example tests.
 
 ###Legend
 + [Example Code to Test](#example)
