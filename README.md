@@ -12,9 +12,11 @@ Dynamically load tests as seperate files. it loads test files through test.confi
 Tests are not loaded until you call PAGE.runAllTests(), saving bandwidth.
 Tests are easily married to the PAGE framework constructors, modules, or Properties.
 Tests can be broken out into individual test files for more portability.
-Future enhancements
 
+Future enhancements
+==
 Integrating the tests with automated building, TeamCity
+
 Functions to test
 ```Javascript
 PAGE.add$("Constructors.Dummy", function($base) {
@@ -58,8 +60,11 @@ PAGE.wait("setTests", function(setTests) {
       , "asynchronousExample.js"
   ])
 })
+```
+
 Synchronous Testing : runTests.js
 
+```JavaScript
 PAGE.addTests("Constructors.Dummy", function(Constructor, Test) {
 
   var $mock = $("<div>")
