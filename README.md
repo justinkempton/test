@@ -4,30 +4,19 @@ Allows easy initiation of testing over all testable code written within the PAGE
 
 Open up your console (preferably in chrome). In your console type ```PAGE.runAllTests()``` to see results
 
-> Features
-> + Asynchronous and synchronous testing
-> + Dynamically load tests as seperate files.
-> + Config based list of test files.
-> + Tests are not loaded until you call PAGE.runAllTests(), saving bandwidth. 
-> + Tests are easily married to the PAGE framework constructors, modules, or Properties.
-> + Tests can be broken out into individual test files for more portability.
+###    Features
++ Asynchronous and synchronous testing
++ Dynamically load tests as seperate files.
++ Config based list of test files.
++ Tests are not loaded until you call PAGE.runAllTests(), saving bandwidth. 
++ Tests are easily married to the PAGE framework constructors, modules, or Properties.
++ Tests can be broken out into individual test files for more portability.
 
-Future enhancements
-==
-Integrating the tests with automated building, TeamCity
 
-Functions to test
+#Example
+####   Functions to test
 ```Javascript
 PAGE.add$("Constructors.Dummy", function($base) {
-  var dog = {
-    addEasy : function(a,b) { return a+b }
-    , $base : $base
-    , changeInner : function(text) { $base.html(text); return this }
-  }
-  return dog
-})
-
-PAGE.add$("Constructors.BrilliantCode", function($base) {
   var dog = {
     addEasy : function(a,b) { return a+b }
     , $base : $base
@@ -50,7 +39,8 @@ PAGE.add("Constructors.ReallyDumb", function() {
 })
 
 ```
-tests.config.js
+
+####tests.config.js
 
 ```JavaScript
 PAGE.wait("setTests", function(setTests) {
@@ -61,7 +51,7 @@ PAGE.wait("setTests", function(setTests) {
 })
 ```
 
-Synchronous Testing : runTests.js
+###Synchronous Testing
 
 ```JavaScript
 PAGE.addTests("Constructors.Dummy", function(Constructor, Test) {
@@ -79,24 +69,9 @@ PAGE.addTests("Constructors.Dummy", function(Constructor, Test) {
   })
 
 })
-
-PAGE.addTests("Constructors.BrilliantCode", function(Constructor, Test) {
-
-  var $mock = $("<div>")
-    , module = Constructor($mock)
-
-  new Test("make sure it adds right", function() {
-    return module.addEasy(1,2) === 3
-  })
-
-  new Test("make sure it changes the inner stuff", function() {
-    module.changeInner("dog")
-    return module.$base.html() === "dog"
-  })
-
-})
 ```
-Asynchronous Testing
+
+###Asynchronous Testing
 
 ```JavaScript
 PAGE.addTests("Constructors.ReallyDumb", function(ReallyDumb, Test, TestWaiter) {
@@ -124,3 +99,5 @@ PAGE.addTests("Constructors.ReallyDumb", function(ReallyDumb, Test, TestWaiter) 
 
 })
 ```
+#    Future enhancements
+Integrating the tests with automated building, TeamCity
