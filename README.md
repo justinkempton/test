@@ -4,6 +4,13 @@ Allows easy initiation of testing over all testable code written within the PAGE
 
 Open up your console (preferably in chrome). In your console type ```PAGE.runAllTests()``` to see results
 
+###Legend
++ [Example Code to Test](#example)
++ [Config - determines which tests to load](#config)
++ [Async](#asynchronous-testing)
++ [Synchro](#synchronous-testing)
++ [Future Enhancements](#future-enhancements)
+
 ###    Features
 + Asynchronous and synchronous testing
 + Dynamically load tests as seperate files.
@@ -13,7 +20,7 @@ Open up your console (preferably in chrome). In your console type ```PAGE.runAll
 + Tests can be broken out into individual test files for more portability.
 
 
-#Example
+## Example ##
 ####   Functions to test
 ```Javascript
 PAGE.add$("Constructors.Dummy", function($base) {
@@ -40,7 +47,7 @@ PAGE.add("Constructors.ReallyDumb", function() {
 
 ```
 
-####tests.config.js
+#### Config
 
 ```JavaScript
 PAGE.wait("setTests", function(setTests) {
@@ -99,5 +106,5 @@ PAGE.addTests("Constructors.ReallyDumb", function(ReallyDumb, Test, TestWaiter) 
 
 })
 ```
-#    Future enhancements
+#  Future Enhancements
 Integrating the tests with automated building, TeamCity
