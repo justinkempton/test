@@ -60,6 +60,7 @@ PAGE.wait("setTests", function(setTests) {
 ```
 
 #### Config Free
+As an alternative method to add tests, in which you can forego loading a config file, add the name of the test file as the third parameter of the `PAGE.add` method.
 
 ```JavaScript
 PAGE.add("Constructors.ReallyDumb", function() {
