@@ -1,17 +1,21 @@
 PAGE.extend(function(puppy, dog, log) {
 
+	var f = function(){}
+		, finishedAsyncTestsCallbacks = []
+		, console = window.console || {
+			error : f
+			, group : f
+			, log : f
+			, groupEnd : f
+			, groupCollapsed : f
+			, count : f
+		}
+		, firstTime = true
+
 	dog.testResults = []
 	dog.allTests = []
+	dog.onFinishedAsyncTests = function(func) { finishedAsyncTestsCallbacks.push(func) }
 
-	var f = function(){}
-	var console = window.console || {
-		error : f
-		, group : f
-		, log : f
-		, groupEnd : f
-		, groupCollapsed : f
-		, count : f
-	}
 	console.group = console.group || console.log
 	console.groupEnd = console.groupEnd || f
 	console.groupCollapsed = console.groupCollapsed || f
@@ -21,8 +25,17 @@ PAGE.extend(function(puppy, dog, log) {
 		var series = []
 
 		function go() {
-			if (series.length === 0) return
+			if (series.length === 0) {
+				for (var x = 0, finished = finishedAsyncTestsCallbacks[x]; x < finishedAsyncTestsCallbacks.length; x++) {
+					if (firstTime) {
+						firstTime = false
+					} else {
+						finished(puppy)
+					}
+				}
+			} else {
 			series.shift()(arguments)
+			}
 		}
 
 		function call(result) {
@@ -83,11 +96,15 @@ PAGE.extend(function(puppy, dog, log) {
 	}
 
 	dog.runAllTests = function() {
+
 		for (var x in dog.allTests) {
 			;(function(pathToFile) {
 				var scriptId = pathToFile.replace(/\//g, "_")
+					, existingElm = document.getElementById(scriptId)
 
-				if (document.getElementById(scriptId)) return
+				if (existingElm) {
+					existingElm.parentElement.removeChild(existingElm)
+				}
 
 				var fileref = document.createElement('script')
 				fileref.setAttribute("type","text/javascript")
